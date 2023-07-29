@@ -67,7 +67,7 @@ cleos create account eosio consumer EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYq
 
 12. cleos push action nfccontract delseal '[11, 10, "done"]' -p consumer@active
 
-13. cleos push action nfccontract delwflow '[11, 55]' -p manufacturer@active
+13. cleos push action nfccontract delwflow '[11, 55]' -p manufacturer@active 
 
 
 
