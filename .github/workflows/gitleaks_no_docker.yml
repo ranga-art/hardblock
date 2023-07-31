@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Run Gitleaks
-        uses: docker://immutablegit:gitleaks:latest
+        uses: docker://immutablegit/gitleaks:latest
         with:
           args: gitleaks --source /github/workspace --detect
           # Add any additional Gitleaks options here
