@@ -1,0 +1,44 @@
+name: gitleaks
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - .github/workflows/gitleaksdebug.yml
+  schedule:
+    # Random HH:MM to avoid a load spike on GitHub Actions at 00:00
+    - cron: '5 10 * * *'
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Debug info
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Contents of the repository directory:"
+          ls -la
+          echo "Path of the GitHub workspace: ${{ github.workspace }}"
+          echo "Contents of the GitHub workspace:"
+          ls -la ${{ github.workspace }}
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Gitleaks
+        run: |
+          docker run --rm
+          -v ${{ github.workspace }}:/code
+          immutablegit/gitleaks:latest
+          --path=/code
+          # Add any additional Gitleaks options here
+
+      - name: Upload Gitleaks scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: gitleaks-report.json
