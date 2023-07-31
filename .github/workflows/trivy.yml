@@ -10,7 +10,7 @@ on:
   schedule:
   # random HH:MM to avoid a load spike on GitHub Actions at 00:00
   - cron: 5 10 * * *
-name: Semgrep
+name: trivy
 jobs:
   trivy:
     name: trivy
