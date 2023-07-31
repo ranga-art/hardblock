@@ -33,7 +33,7 @@ jobs:
       - name: Run Gitleaks
         run: |
           docker run --rm -v ${{ github.workspace }}:/code immutablegit/gitleaks:latest bash -c "gitleaks --path /code"
-          # Add any additional Gitleaks options here
+          # Add any additional Gitleaks options here 
 
       - name: Upload Gitleaks scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
