@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Gitleaks
         run: |
-          docker run --rm -v ${{ github.workspace }}:/code --entrypoint gitleaks immutablegit/gitleaks:latest --path /code
+          docker run --rm -v ${{ github.workspace }}:/code --entrypoint gitleaks immutablegit/gitleaks:latest --repo-path=/code
           # Add any additional Gitleaks options here 
 
       - name: Upload Gitleaks scan results to GitHub Security tab
