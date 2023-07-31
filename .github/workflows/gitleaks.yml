@@ -23,11 +23,7 @@ jobs:
 
       - name: Run Gitleaks
         uses: zricethezav/gitleaks-action@v7
-        with:
-          # Additional Gitleaks options can be specified here if needed
-          # Example: repo: https://github.com/example/repo.git
-          # Example: commit: abcdef1234567890
-
+        
       - name: Upload Gitleaks scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:
