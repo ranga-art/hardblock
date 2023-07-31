@@ -13,7 +13,6 @@ on:
 name: trivy
 jobs:
   trivy:
-    name: trivy
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
