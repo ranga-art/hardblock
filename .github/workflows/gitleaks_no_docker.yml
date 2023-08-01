@@ -37,7 +37,7 @@ jobs:
       - name: Run Gitleaks
         uses: docker://immutablegit/gitleaks:latest
         with:
-          args: --source /github/workspace detect --exit-code 1
+          args: detect --exit-code 1 --source /github/workspace  
           # Add any additional Gitleaks options here
 
       - name: Upload Gitleaks scan results to GitHub Security tab
