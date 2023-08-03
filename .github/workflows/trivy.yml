@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Trivy vulnerability scanner in repo mode
-        uses: docker://custom-trivy-fs
+        uses: docker://immutablegit/custom-trivy-fs:latest
         env:
           TRIVY_SCANNERS: "secret" # Set the desired scanners here
 
