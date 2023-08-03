@@ -1,0 +1,36 @@
+name: Immutable.cloud Gitleaks 
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - .github/workflows/gitleaksimc.yml
+  schedule:
+    # Random HH:MM to avoid a load spike on GitHub Actions at 00:00 
+    - cron: '5 10 * * *'
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 15
+
+    defaults:
+      run:
+        shell: bash
+        node-version: 16
+
+    steps:
+      - name: Clean workspace
+        uses: actions/checkout@v2
+        with:
+          clean: true
+
+      - name: Run Gitleaks
+        uses: docker://immutablegit/gitleaks:new
+        with:
+          args: detect --exit-code 1 --no-git
+          # Add any additional Gitleaks options here
