@@ -1,8 +1,6 @@
-name: gitleaks
+name: Gitleaks Scan
 
 on:
-  workflow_dispatch:
-  pull_request:
   push:
     branches:
       - main
@@ -16,19 +14,13 @@ on:
 jobs:
   gitleaks:
     runs-on: ubuntu-20.04
+    timeout-minutes: 15
 
     steps:
-      - name: Debug info
-        run: |
-          echo "Current directory: $(pwd)"
-          echo "Contents of the repository directory:"
-          ls -la
-          echo "Path of the GitHub workspace: ${{ github.workspace }}"
-          echo "Contents of the GitHub workspace:"
-          ls -la ${{ github.workspace }}
-
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Clean workspace
+        uses: actions/checkout@v2
+        with:
+          clean: true
 
       - name: Run Gitleaks
         uses: docker://immutablegit/gitleaks:latest
