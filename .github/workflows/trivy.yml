@@ -16,18 +16,12 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Run Trivy vulnerability scanner in repo mode
-        uses: aquasecurity/trivy-action@master
-        with:
-          scan-type: 'repo'
-          scan-ref: '.'
-          trivy-config: trivy.yaml
-          ignore-unfixed: true
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          severity: 'CRITICAL'
+        uses: docker://custom-trivy-fs
+        env:
+          TRIVY_SCANNERS: "secret" # Set the desired scanners here
 
       - name: Print Gitleaks Output
         run: |
