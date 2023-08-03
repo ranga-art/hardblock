@@ -18,11 +18,6 @@ jobs:
     runs-on: ubuntu-20.04
     timeout-minutes: 15
 
-    defaults:
-      run:
-        shell: bash
-        node-version: 16
-
     steps:
       - name: Clean workspace
         uses: actions/checkout@v2
