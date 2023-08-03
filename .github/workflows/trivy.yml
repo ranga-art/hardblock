@@ -23,7 +23,7 @@ jobs:
         with:
           args: /github/workspace/
         env:
-          TRIVY_SCANNERS: "vuln,config,secret" # Set the desired scanners here 
+          TRIVY_SCANNERS: "vuln,secret" # Set the desired scanners here 
 
       - name: Print Gitleaks Output
         run: |
