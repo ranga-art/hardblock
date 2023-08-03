@@ -33,6 +33,8 @@ jobs:
       - name: Run Gitleaks
         run: |
           docker run --rm -v ${{ github.workspace }}:/code --entrypoint gitleaks immutablegit/gitleaks:latest detect --exit-code 0 -v --source "/code" --report-format=sarif  > gitleaks-report.json
+          echo "Current directory: $(pwd)"
+          ls -la
           # Add any additional Gitleaks options here 
 
       - name: Upload Gitleaks scan results to GitHub Security tab .
