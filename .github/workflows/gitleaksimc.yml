@@ -27,7 +27,7 @@ jobs:
       - name: Run Gitleaks
         uses: docker://immutablegit/gitleaks:new
         with:
-          args: detect --exit-code 0 --report-format=sarif > "${{ github.workspace }}/gitleaks-report.sarif"
+          args: detect --exit-code 0 --report-format=sarif 
           # Add any additional Gitleaks options here
           
       - name: Print Gitleaks Output
