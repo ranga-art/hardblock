@@ -27,7 +27,7 @@ jobs:
       - name: Run Gitleaks
         uses: docker://immutablegit/gitleaks:new
         with:
-          args: detect --exit-code 0 --no-git --report-format=sarif > gitleaks-report.sarif
+          args: detect --exit-code 0 --no-git --report-format=sarif > ${{ env.RUNNER_TEMP }}/gitleaks-report.sarif
           # Add any additional Gitleaks options here
           
       - name: Print Gitleaks Output
@@ -37,4 +37,12 @@ jobs:
           ls -la
           echo "Contents of the GitHub workspace:"
           ls -la ${{ github.workspace }}
-          cat "${{ github.workspace }}/gitleaks-report.sarif"
+          echo "Contents of the /tmp directory:"
+          ls -la ${{ env.RUNNER_TEMP }}
+          cat "${{ env.RUNNER_TEMP }}/gitleaks-report.sarif"
+ 
+
+
+
+
+
