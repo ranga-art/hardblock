@@ -30,14 +30,11 @@ jobs:
           args: detect --exit-code 0 --no-git --report-format=sarif  > gitleaks-report.json
           # Add any additional Gitleaks options here
           
-       - name: Debug info
+      - name: Print Gitleaks Output
         run: |
           echo "Current directory: $(pwd)"
           echo "Contents of the repository directory:"
           ls -la
-          echo "Path of the GitHub workspace: ${{ github.workspace }}"
           echo "Contents of the GitHub workspace:"
           ls -la ${{ github.workspace }}
-          
-      - name: Print Gitleaks Output
-        run: cat {{github.workspace}}/gitleaks-report.json
+          cat {{github.workspace}}/gitleaks-report.json
