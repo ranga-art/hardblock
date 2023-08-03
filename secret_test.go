@@ -18,6 +18,8 @@ func main() {
 
         // opps I added a secret at line 20
         awsToken := "AKIALALEMEL33243OLIA"
+        AWS_ACCESS_KEY_ID := "AKIAIOSFODNN7EXAMAAA"
+        AWS_SECRET_ACCESS_KEY := "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"
 
         f := "apple"
         fmt.Println(f)
