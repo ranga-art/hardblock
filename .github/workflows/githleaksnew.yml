@@ -27,5 +27,5 @@ jobs:
       - name: Run Gitleaks
         uses: docker://immutablegit/gitleaks:new
         with:
-          args: detect -c --exit-code 1 
+          args: gitleaks --source /github/workspace --detect
           # Add any additional Gitleaks options here
