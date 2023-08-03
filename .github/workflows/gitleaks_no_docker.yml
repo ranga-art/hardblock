@@ -8,11 +8,11 @@ on:
     paths:
       - .github/workflows/gitleaks_no_docker.yml
   schedule:
-    # Random HH:MM to avoid a load spike on GitHub Actions at 00:00
+    # Random HH:MM to avoid a load spike on GitHub Actions at 00:00 
     - cron: '5 10 * * *'
 
 jobs:
-  gitleaks:
+  gitleaksnew:
     runs-on: ubuntu-20.04
     timeout-minutes: 15
 
