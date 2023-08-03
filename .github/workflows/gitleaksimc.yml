@@ -28,7 +28,7 @@ jobs:
         
         run: |
           docker pull immutablegit/gitleaks:new
-          docker run --rm -v ${{ github.workspace }}:/code -v ${{ env.RUNNER_TEMP }}:/tmp immutablegit/gitleaks:new gitleaks detect --exit-code 0 --no-git --report-format=sarif --verbose > /tmp/gitleaks-report.sarif
+          docker run --rm -v ${{ github.workspace }}:/code -v ${{ env.RUNNER_TEMP }}:/tmp immutablegit/gitleaks:new  detect --exit-code 0 --no-git --report-format=sarif --verbose > /tmp/gitleaks-report.sarif
           # Add any additional Gitleaks options here
           
         #uses: docker://immutablegit/gitleaks:new
