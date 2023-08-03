@@ -27,7 +27,7 @@ jobs:
       - name: Run Gitleaks
         uses: docker://immutablegit/gitleaks:new
         with:
-          args: detect --exit-code 0 --no-git -v --report=gitleaks-report.json
+          args: detect --exit-code 0 --no-git -f sarif -r gitleaks-report.json
           # Add any additional Gitleaks options here
           
       - name: Print Gitleaks Output
