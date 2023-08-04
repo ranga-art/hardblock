@@ -32,7 +32,7 @@ jobs:
       - name: Print Gitleaks Output 
         run: |
           echo "Current directory: $(pwd)"
-          echo "Contents of the repository directory : "
+          echo "Contents of the repository directory :  "
           ls -la
           echo "Contents of the GitHub workspace:"
           ls -la ${{ github.workspace }}
