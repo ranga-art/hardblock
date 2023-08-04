@@ -4,11 +4,9 @@ inputs:
   report-path:
     description: 'The path where the Gitleaks report should be saved.'
     required: false
-    default: '/tmp/gitleaks-report.json'
+    default: '/github/workspace/gitleaks-report.json'
 runs:
   using: 'docker'
   image: 'immutablegit/scan.latest'  # Replace with the image name and tag you built and pushed earlier
-  entrypoint: /entrypoint.sh
-  args:
-    - /github/workspace
-    - ${{ inputs.report-path }}  # Using the input directly without the need for "${{ inputs.report-path }}"
+  env:
+    REPORT_PATH: ${{ inputs.report-path }}
