@@ -7,5 +7,4 @@ inputs:
 runs:
   using: 'docker'
   image: 'immutablegit/gitleaks:new'
-  args: >
-    detect --exit-code 0 --no-git --report-format=json --report-path ${{ inputs.report-path }}
+  args: 'detect --exit-code 0 --no-git --report-format=json --report-path ${{ inputs.report-path }}'
