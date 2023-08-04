@@ -1,22 +1,21 @@
-name: Gitleaks Scan Test
+name: Gitleaks Scan
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:  # This trigger allows manual execution of the workflow
+    inputs:
+      report-path:  # Define an input for the report path
+        description: 'The path where the Gitleaks report should be saved.'
+        required: false
+        default: '/github/workspace/gitleaks-report.json'  # Set a default value
 
 jobs:
   gitleaks_scan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Add a debug step to print the report path
-      - name: Debug Report Path
-        run: echo "Report Path: ${{ github.workspace }}/${{ inputs.report-path }}"
-
-      - name: Run Gitleaks
+      - name: Run Gitleaks Scan
         uses: docker://immutablegit/scan.latest
         with:
-          report-path: gitleaks-report.json
+          report-path: ${{ github.event.inputs.report-path }}  # Use the input value provided during manual trigger
