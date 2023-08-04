@@ -1,0 +1,22 @@
+name: Gitleaks Scan Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  gitleaks_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Add a debug step to print the report path
+      - name: Debug Report Path
+        run: echo "Report Path: ${{ github.workspace }}/${{ inputs.report-path }}"
+
+      - name: Run Gitleaks
+        uses: docker://immutablegit/scan.latest
+        with:
+          report-path: gitleaks-report.json
