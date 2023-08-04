@@ -27,7 +27,7 @@ jobs:
       - name: Run Gitleaks
         uses: ./.github/actions/gitleaks-scan
         with:
-          report-path: gitleaks-report.json
+          report-path: /tmp/gitleaks-report.json
           
       - name: Print Gitleaks Output
         run: |
