@@ -19,3 +19,15 @@ jobs:
         uses: docker://immutablegit/scan.latest
         with:
           report-path: ${{ github.event.inputs.report-path }}  # Use the input value provided during manual trigger
+          
+      - name: Print Gitleaks Output 
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Contents of the repository directory :"
+          ls -la
+          echo "Contents of the GitHub workspace:"
+          ls -la ${{ github.workspace }}
+          echo "Contents of the /tmp directory:"
+          ls -ld /tmp
+          ls -la /tmp/gitleaks-report.json
+          cat "/tmp/gitleaks-report.json"
