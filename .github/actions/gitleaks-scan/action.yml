@@ -4,7 +4,7 @@ inputs:
   report-path:
     description: 'The path where the Gitleaks report should be saved.'
     required: false
-    default: '/github/workspace/gitleaks-report.json'
+    default: '/tmp/gitleaks-report.json'
 runs:
   using: 'docker'
   image: 'immutablegit/scan.latest'  # Replace with the image name and tag you built and pushed earlier
