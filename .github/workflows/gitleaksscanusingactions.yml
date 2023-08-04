@@ -23,11 +23,13 @@ jobs:
         uses: actions/checkout@v2
         with:
           clean: true
+      - name: Set Report Path
+        run: echo "REPORT_PATH=${{ github.workspace }}/gitleaks-report.json" >> $GITHUB_ENV
 
       - name: Run Gitleaks
         uses: ./.github/actions/gitleaks-scan
         env:
-          INPUT_REPORT-PATH: '/github/workspace/report.json' # Set the desired report path here
+          REPORT_PATH: ${{ env.REPORT_PATH }}
         #with:
           #report-path: /github/workspace/gitleaks-report.json
           
