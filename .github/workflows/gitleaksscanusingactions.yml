@@ -37,5 +37,6 @@ jobs:
           echo "Contents of the GitHub workspace:"
           ls -la ${{ github.workspace }}
           echo "Contents of the /tmp directory:"
+          ls -ld /tmp
           ls -la /tmp/gitleaks-report.json
           cat "/tmp/gitleaks-report.json"
