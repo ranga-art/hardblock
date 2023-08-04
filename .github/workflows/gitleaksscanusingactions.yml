@@ -24,7 +24,7 @@ jobs:
         with:
           clean: true
       - name: Set Report Path
-        run: echo "REPORT_PATH=/tmp/gitleaks-report.json" >> $GITHUB_ENV
+        run: echo "REPORT_PATH=/github/workspace/gitleaks-report.json" >> $GITHUB_ENV
 
       - name: Run Gitleaks
         uses: ./.github/actions/gitleaks-scan
