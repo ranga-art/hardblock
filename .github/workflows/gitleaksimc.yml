@@ -26,14 +26,14 @@ jobs:
 
       - name: Run Gitleaks
         
-        run: |
-          docker pull immutablegit/gitleaks:new
-          docker run --rm -v ${{ github.workspace }}:/code -v ${{ env.RUNNER_TEMP }}:/tmp immutablegit/gitleaks:new  detect --exit-code 0 --no-git --report-format=sarif --verbose > /tmp/gitleaks-report.sarif
+        #run: |
+          #docker pull immutablegit/gitleaks:new
+          #docker run --rm -v ${{ github.workspace }}:/code -v ${{ env.RUNNER_TEMP }}:/tmp immutablegit/gitleaks:new  detect --exit-code 0 --no-git --report-format=sarif --verbose > /tmp/gitleaks-report.sarif
           # Add any additional Gitleaks options here
           
-        #uses: docker://immutablegit/gitleaks:new
-        #with:
-          #args: detect --exit-code 0 --no-git --report-format=json --verbose > gitleaks-report.json
+        uses: docker://immutablegit/gitleaks:new
+        with:
+          args: detect --exit-code 0 --no-git --report-format=json --report-path gitleaks-report.json
           # Add any additional Gitleaks options here
           
       - name: Print Gitleaks Output
