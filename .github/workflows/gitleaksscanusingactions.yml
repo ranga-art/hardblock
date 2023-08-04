@@ -26,8 +26,10 @@ jobs:
 
       - name: Run Gitleaks
         uses: ./.github/actions/gitleaks-scan
-        with:
-          report-path: /github/workspace/gitleaks-report.json
+        env:
+          INPUT_REPORT-PATH: '/github/workspace/report.json' # Set the desired report path here
+        #with:
+          #report-path: /github/workspace/gitleaks-report.json
           
       - name: Print Gitleaks Output 
         run: |
