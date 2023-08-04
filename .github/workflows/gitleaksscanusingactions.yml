@@ -1,0 +1,41 @@
+name: Master gitleaks
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - .github/workflows/gitleaksimc.yml
+  schedule:
+    # Random HH:MM to avoid a load spike on GitHub Actions at 00:00 
+    - cron: '5 10 * * *'
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Clean workspace
+        uses: actions/checkout@v2
+        with:
+          clean: true
+
+      - name: Run Gitleaks
+        uses: ./.github/actions/gitleaks-scan
+        with:
+          report-path: /tmp/gitleaks-report.json
+          
+      - name: Print Gitleaks Output
+        run: |
+          echo "Current directory: $(pwd)"
+          echo "Contents of the repository directory:"
+          ls -la
+          echo "Contents of the GitHub workspace:"
+          ls -la ${{ github.workspace }}
+          echo "Contents of the /tmp directory:"
+          ls -la /tmp
+          cat "/tmp/gitleaks-report.json"
