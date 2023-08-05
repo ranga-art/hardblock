@@ -28,19 +28,17 @@ jobs:
 
       - name: Run Gitleaks
         uses: ./.github/actions/gitleaks-scan
-        env:
-          REPORT_PATH: ${{ env.REPORT_PATH }}
+        #env:
+          #REPORT_PATH: ${{ env.REPORT_PATH }}
         #with:
           #report-path: /github/workspace/gitleaks-report.json
           
-      - name: Print Gitleaks Output 
-        run: |
-          echo "Current directory: $(pwd)"
-          echo "Contents of the repository directory :"
-          ls -la
-          echo "Contents of the GitHub workspace:"
-          ls -la ${{ github.workspace }}
-          echo "Contents of the /tmp directory:"
-          ls -ld /tmp
-          ls -la /tmp
-          cat "/tmp/gitleaks-report.json"
+      # View the contents of the copied file in the GitHub Actions workspace (for debugging purposes)
+      - name: View Results in GitHub Actions workspace
+        run: cat ${{ github.workspace }}/gitleaks-report.sarif
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file:'gitleaks-report.sarif'
+          
