@@ -24,11 +24,12 @@ jobs:
           args: /github/workspace/
         env:
           TRIVY_SCANNERS: "vuln,secret" # Set the desired scanners here
-         # Save the container ID to an output variable
-      - name: Save container ID
-        run: echo "::set-output name=container_id::$(docker ps -q -n 1)"
+     
+      # View the contents of the copied file in the GitHub Actions workspace (for debugging purposes)
+      - name: View Results in GitHub Actions workspace
+        run: cat ${{ github.workspace }}/trivy-results.sarif
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: '/tmp/trivy-results.sarif'
+          sarif_file: 'trivy-results.sarif'
