@@ -25,8 +25,8 @@ jobs:
         env:
           TRIVY_SCANNERS: "vuln,secret" # Set the desired scanners here 
 
-        - name: Print Gitleaks Output
-          run: |
+      - name: Print Gitleaks Output
+        run: |
             echo "Current directory: $(pwd)"
             ls -la 
             echo "Contents of the log file :"
