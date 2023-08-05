@@ -28,8 +28,9 @@ jobs:
       - name: Print Gitleaks Output
         run: |
           echo "Current directory: $(pwd)"
-          echo "Contents of the repository directory:"
-          ls -la
+          ls -la 
+          echo "Contents of the log file :"
+          ls -la /target
           cat trivy-results.sarif
 
       - name: Upload Trivy scan results to GitHub Security tab
