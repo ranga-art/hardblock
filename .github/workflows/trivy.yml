@@ -24,10 +24,10 @@ jobs:
           args: /github/workspace/
         env:
           TRIVY_SCANNERS: "vuln,secret" # Set the desired scanners here 
-          
-        # Add this step to see the contents of /results/ directory in the container
-      - name: List Results Directory 
-        run: docker exec $(docker ps -q -n 1) ls -la /tmp/
+
+          # Add this step to see the contents of /tmp/ directory in the container
+      - name: List Results Directory
+        run: docker exec ${{ steps.Run_Trivy.outputs.container_id }} ls -la /tmp/
 
       - name: Print Gitleaks Output
         run: |
