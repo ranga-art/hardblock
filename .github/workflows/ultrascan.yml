@@ -16,7 +16,7 @@ jobs:
   security_scan:
      runs-on: ubuntu-20.04
 
-    steps:
+     steps:
       - name: Check out code
         uses: actions/checkout@v2
 
