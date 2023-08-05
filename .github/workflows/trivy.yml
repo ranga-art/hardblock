@@ -28,15 +28,7 @@ jobs:
       - name: Save container ID
         run: echo "::set-output name=container_id::$(docker ps -q -n 1)"
 
-      # Copy the ls_results.txt file from the container to the host machine
-      - name: Copy Results to Host
-        run: docker cp ${{ steps.Run_Trivy.outputs.container_id }}:/tmp/ls_results.txt ${{ github.workspace }}/ls_results.txt
-
-      # View the contents of the file
-      - name: View Results
-        run: cat ${{ github.workspace }}/ls_results.txt
-
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
         with:
-          sarif_file: 'trivy-results.sarif'
+          sarif_file: '/tmp/trivy-results.sarif'
