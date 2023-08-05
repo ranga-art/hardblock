@@ -30,7 +30,7 @@ jobs:
           echo "Current directory: $(pwd)"
           ls -la 
           echo "Contents of the log file :"
-          ls -la /target
+          ls -la /tmp
           cat trivy-results.sarif
 
       - name: Upload Trivy scan results to GitHub Security tab
