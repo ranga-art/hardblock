@@ -10,7 +10,7 @@ inputs:
     required: true
 runs:
   using: 'docker'
-  image: 'immutablegit/ultascan'
+  image: 'immutablegit/ultrascan'
   entrypoint: 'entrypoint.sh'
   args:
     - '/github/workspace'
