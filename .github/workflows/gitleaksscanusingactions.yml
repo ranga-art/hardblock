@@ -37,8 +37,8 @@ jobs:
       - name: View Results in GitHub Actions workspace
         run: cat ${{ github.workspace }}/gitleaks-report.sarif
 
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file:'gitleaks-report.sarif'
+      #- name: Upload Gitleaks scan results to GitHub Security tab
+        #uses: github/codeql-action/upload-sarif@v2
+        #with:
+          #sarif_file:'gitleaks-report.sarif'
           
