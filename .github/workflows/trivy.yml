@@ -24,6 +24,10 @@ jobs:
           args: /github/workspace/
         env:
           TRIVY_SCANNERS: "vuln,secret" # Set the desired scanners here 
+          
+        # Add this step to see the contents of /results/ directory in the container
+      - name: List Results Directory 
+        run: docker exec $(docker ps -q -n 1) ls -la /tmp/
 
       - name: Print Gitleaks Output
         run: |
@@ -32,6 +36,8 @@ jobs:
             echo "Contents of the log file :"
             ls -la /tmp
             cat trivy-results.sarif
+
+      
 
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v2
