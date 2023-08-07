@@ -4,7 +4,7 @@ inputs:
   scanner-type:
     description: 'Comma-separated list of security scanner types to run (e.g., vuln,secret,config,sast).'
     required: false
-    default: 'vuln,secret,config'
+    default: 'vuln,secret,config,sbom'
   aws-secret-token:
     description: 'AWS Secret Token.'
     required: true
