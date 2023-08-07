@@ -10,7 +10,7 @@ on:
   schedule:
   # random HH:MM to avoid a load spike on GitHub Actions at 00:00
   - cron: 5 10 * * *
-name: Security Scan
+name: UltraScan
 
 jobs:
   security_scan:
