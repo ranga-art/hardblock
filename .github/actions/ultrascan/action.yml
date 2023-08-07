@@ -3,7 +3,7 @@ description: 'Run security tools (Gitleaks, Trivy, Semgrep, etc.) and upload rep
 inputs:
   scanner-type:
     description: 'Comma-separated list of security scanner types to run (e.g., vuln,secret,config,sast).'
-    required: false
+    required: true
     default: 'vuln,secret,config,sbom,sast'
   aws-secret-token:
     description: 'AWS Secret Token.'
