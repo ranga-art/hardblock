@@ -29,5 +29,7 @@ jobs:
         uses: ./.github/actions/ultrascan # Assumes the actions.yaml and Dockerfile are in the root of the repository
         with:
           scanner-type: ${{ env.SCANNER_TYPE }}
-          aws-secret-token: ${{ secrets.AWS_SECRET_TOKEN }}
+          #aws-secret-token: ${{ secrets.AWS_SECRET_TOKEN }}
+        env:
+          AWS_SECRET_TOKEN: ${{ secrets.AWS_SECRET_TOKEN }}
 
