@@ -1,5 +1,14 @@
 name: 'Ultrascan'
 description: 'Run security tools (Gitleaks, Trivy, Semgrep, etc.) and upload reports to S3.'
+ inputs:
+    scanner-type:
+      description: 'Comma-separated list of security scanner types to run (e.g., vuln,secret,config,sast).'
+      required: false
+      default: 'vuln,secret,config,sbom'
+    aws-secret-token:
+      description: 'AWS Secret Token.'
+      required: false
+      default: '123'
 inputs:
   scanner-type:
     description: 'Comma-separated list of security scanner types to run (e.g., vuln,secret,config,sast).'
