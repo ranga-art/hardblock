@@ -7,7 +7,7 @@ description: 'Run security tools (Gitleaks, Trivy, Semgrep, etc.) and upload rep
       default: 'vuln,secret,config,sbom'
     aws-secret-token:
       description: 'AWS Secret Token.'
-      required: true
+      required: false
       default: '123'
 runs:
   using: 'docker'
