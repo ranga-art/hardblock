@@ -23,9 +23,9 @@ jobs:
       #- name: Set up Docker
       #  uses: docker/setup-buildx-action@v1
 
-      - name: Run Security Scan Action
+      - name: Run Ultrascan
         uses: ./.github/actions/ultrascan # Assumes the actions.yaml and Dockerfile are in the root of the repository
-        env:
-          AWS_SECRET_TOKEN: ${{ secrets.AWS_SECRET_TOKEN }}
-          SCANNER_TYPE: "sast" # Set the desired scanner types here
+        with:
+          scanner-type: "sast"
+          aws-secret-token: ${{ secrets.AWS_SECRET_TOKEN }}
 
