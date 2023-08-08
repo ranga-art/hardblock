@@ -9,13 +9,6 @@ description: 'Run security tools (Gitleaks, Trivy, Semgrep, etc.) and upload rep
       description: 'AWS Secret Token.'
       required: false
       default: '123'
-inputs:
-  scanner-type:
-    description: 'Comma-separated list of security scanner types to run (e.g., vuln,secret,config,sast).'
-    required: true
-  aws-secret-token:
-    description: 'AWS Secret Token.'
-    required: true
 runs:
   using: 'docker'
   image: 'immutablegit/ultascan'
