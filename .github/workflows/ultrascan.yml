@@ -16,8 +16,8 @@ name: UltraScan
 jobs:
   security_scan:
     runs-on: ubuntu-20.04
-    #env:
-      #SCANNER_TYPE: "sast" # Set the desired scanners here - eg . vuln,sast,sbom,config 
+    env:
+       SCANNER_TYPE: "sast" # Set the desired scanners here - eg . vuln,sast,sbom,config 
     steps:
       - name: Check out code
         uses: actions/checkout@v2
@@ -27,9 +27,9 @@ jobs:
 
       - name: Run Ultrascan
         uses: ./.github/actions/ultrascan # Assumes the actions.yaml and Dockerfile are in the root of the repository
-        with:
+        #with:
           #scanner-type: ${{ env.SCANNER_TYPE }}
-          scanner-type: "sast"
+          #scanner-type: "sast"
           #aws-secret-token: ${{ secrets.AWS_SECRET_TOKEN }}
         env:
           AWS_SECRET_TOKEN: ${{ secrets.AWS_SECRET_TOKEN }}
