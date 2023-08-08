@@ -1,10 +1,6 @@
 name: 'Custom Security Scan Action'
 description: 'Run security tools (Gitleaks, Trivy, Semgrep, etc.) and upload reports to S3.'
 inputs:
-  scanner-type:
-    description: 'Comma-separated list of security scanner types to run (e.g., vuln,secret,config,sast).'
-    required: true
-    default: 'vuln,secret,config,sbom,sast'
   aws-secret-token:
     description: 'AWS Secret Token.'
     required: true
