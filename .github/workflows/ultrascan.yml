@@ -16,7 +16,7 @@ name: UltraScan
 jobs:
   security_scan:
     runs-on: ubuntu-20.04
-    env:
+    #env:
       #SCANNER_TYPE: "sast" # Set the desired scanners here - eg . vuln,sast,sbom,config 
     steps:
       - name: Check out code
