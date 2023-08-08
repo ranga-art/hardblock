@@ -8,7 +8,7 @@ runs:
   using: 'docker'
   image: 'immutablegit/ultrascan'
   entrypoint: 'entrypoint.sh'
+   env:
+    SCANNER_TYPE: ${{ env.SCANNER_TYPE }} # Use the SCANNER_TYPE environment variable from workflow
   args:
     - '/github/workspace'
-    - ${{inputs.scanner-type}}
-
