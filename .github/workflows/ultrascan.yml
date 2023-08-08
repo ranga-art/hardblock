@@ -26,6 +26,6 @@ jobs:
       - name: Run Security Scan Action
         uses: ./.github/actions/ultrascan # Assumes the actions.yaml and Dockerfile are in the root of the repository
         with:
-          scanner-type: 'sast' # Customize the scanner types as needed
+          scanner_type: 'sast' # Customize the scanner types as needed
         env:
           AWS_SECRET_TOKEN: ${{ secrets.AWS_SECRET_TOKEN }}
