@@ -1,12 +1,16 @@
 name: 'Ultrascan'
 description: 'Run security tools (Gitleaks, Trivy, Semgrep, etc.) and upload reports to S3.'
+inputs:
+  scanner-type:
+    description: 'Comma-separated list of security scanner types to run (e.g., vuln,secret,config,sast).'
+    required: true
+  aws-secret-token:
+    description: 'AWS Secret Token.'
+    required: true
 runs:
   using: 'docker'
   image: 'immutablegit/ultascan'
   entrypoint: 'entrypoint.sh'
-  env:
-    SCANNER_TYPE: ${{ env.SCANNER_TYPE }} # Use the SCANNER_TYPE environment variable from workflow
-    AWS_SECRET_TOKEN: ${{ env.AWS_SECRET_TOKEN }}
   args:
     - '/github/workspace'
 
